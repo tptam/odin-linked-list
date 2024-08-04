@@ -123,7 +123,29 @@ class LinkedList {
   }
 
   //   Extra credit
-  insertAt(value, index) {}
+  insertAt(value, index) {
+    if (this.#head === undefined) {
+      this.append(value);
+      return;
+    }
+    const size = this.size();
+    if (index < 0 && size + index >= 0) {
+      this.insertAt(value, size + index);
+      return;
+    }
+    if (index <= 0) {
+      this.prepend(value);
+      return;
+    }
+    if (index >= size) {
+      this.append(value);
+      return;
+    }
+    const newNode = createNode();
+    newNode.value = value;
+    newNode.nextNode = this.at(index);
+    this.at(index - 1).nextNode = newNode;
+  }
   removeAt(index) {}
 }
 
