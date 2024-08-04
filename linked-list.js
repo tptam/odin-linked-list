@@ -146,7 +146,28 @@ class LinkedList {
     newNode.nextNode = this.at(index);
     this.at(index - 1).nextNode = newNode;
   }
-  removeAt(index) {}
+  removeAt(index) {
+    if (this.#head === undefined) {
+      return;
+    }
+    const size = this.size();
+    if (index < 0 && size + index >= 0) {
+      this.removeAt(size + index);
+      return;
+    }
+    if (index < 0 || index >= size) {
+      return;
+    }
+    if (index === size - 1) {
+      this.pop();
+      return;
+    }
+    if (index === 0) {
+      this.#head = this.#head.nextNode;
+      return;
+    }
+    this.at(index - 1).nextNode = this.at(index + 1);
+  }
 }
 
 export { LinkedList };
