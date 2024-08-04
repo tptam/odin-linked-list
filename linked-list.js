@@ -68,13 +68,17 @@ class LinkedList {
     }
     return current;
   }
+
   pop() {
     if (this.#head === undefined) {
       return undefined;
     }
     const tail = this.tail();
-    this.at(-2).nextNode = null;
-    return tail;
+    if (tail === this.#head) {
+      this.#head = undefined;
+    } else {
+      this.at(-2).nextNode = null;
+    }
   }
   contains(value) {
     if (this.#head === undefined) {
