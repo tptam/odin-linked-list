@@ -68,7 +68,14 @@ class LinkedList {
     }
     return current;
   }
-  pop() {}
+  pop() {
+    if (this.#head === undefined) {
+      return undefined;
+    }
+    const tail = this.tail();
+    this.at(-2).nextNode = null;
+    return tail;
+  }
   contains(value) {}
   find(value) {}
   toString() {
