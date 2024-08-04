@@ -76,7 +76,19 @@ class LinkedList {
     this.at(-2).nextNode = null;
     return tail;
   }
-  contains(value) {}
+  contains(value) {
+    if (this.#head === undefined) {
+      return false;
+    }
+    let current = this.#head;
+    while (current !== null) {
+      if (current.value === value) {
+        return true;
+      }
+      current = current.nextNode;
+    }
+    return false;
+  }
   find(value) {}
   toString() {
     if (this.#head === undefined) {
