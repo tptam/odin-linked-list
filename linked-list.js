@@ -23,7 +23,18 @@ class LinkedList {
       this.#head = newNode;
     }
   }
-  size() {}
+  size() {
+    if (this.#head === undefined) {
+      return 0;
+    }
+    let current = this.#head;
+    let count = 0;
+    while (current !== null) {
+      count++;
+      current = current.nextNode;
+    }
+    return count;
+  }
   head() {}
   tail() {
     if (this.#head === undefined) {
