@@ -1,17 +1,53 @@
-import { createNode } from "./node";
+import { createNode } from "./node.js";
 
 class LinkedList {
+  #head;
   constructor() {}
-  append(value) {}
+  append(value) {
+    if (this.#head === undefined) {
+      this.#head = createNode();
+      this.#head.value = value;
+    } else {
+      const newNode = createNode();
+      newNode.value = value;
+      this.tail().nextNode = newNode;
+    }
+  }
   prepend(value) {}
   size() {}
   head() {}
-  tail() {}
+  tail() {
+    if (this.#head === undefined) {
+      return;
+    } else {
+      let current = this.#head;
+      while (current.nextNode !== null) {
+        current = current.nextNode;
+      }
+      return current;
+    }
+  }
   at(index) {}
   pop() {}
   contains(value) {}
   find(value) {}
-  toString() {}
+  toString() {
+    if (this.#head === undefined) {
+      return "";
+    }
+    let string = "";
+    let current = this.#head;
+    while (true) {
+      if (current === null) {
+        string += "null";
+        break;
+      } else {
+        string += `( ${current.value} ) -> `;
+        current = current.nextNode;
+      }
+    }
+    return string;
+  }
 
   //   Extra credit
   insertAt(value, index) {}
