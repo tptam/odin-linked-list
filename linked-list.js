@@ -79,7 +79,9 @@ class LinkedList {
     } else {
       this.at(-2).nextNode = null;
     }
+    return tail;
   }
+
   contains(value) {
     if (this.#head === undefined) {
       return false;
