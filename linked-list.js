@@ -13,7 +13,16 @@ class LinkedList {
       this.tail().nextNode = newNode;
     }
   }
-  prepend(value) {}
+  prepend(value) {
+    if (this.#head === undefined) {
+      this.append(value);
+    } else {
+      const newNode = createNode();
+      newNode.value = value;
+      newNode.nextNode = this.#head;
+      this.#head = newNode;
+    }
+  }
   size() {}
   head() {}
   tail() {
