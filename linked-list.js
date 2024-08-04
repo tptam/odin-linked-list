@@ -35,7 +35,9 @@ class LinkedList {
     }
     return count;
   }
-  head() {}
+  head() {
+    return this.#head;
+  }
   tail() {
     if (this.#head === undefined) {
       return;
