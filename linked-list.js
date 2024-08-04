@@ -89,7 +89,21 @@ class LinkedList {
     }
     return false;
   }
-  find(value) {}
+  find(value) {
+    if (this.#head === undefined) {
+      return null;
+    }
+    let current = this.#head;
+    let count = 0;
+    while (current !== null) {
+      if (current.value === value) {
+        return count;
+      }
+      count++;
+      current = current.nextNode;
+    }
+    return null;
+  }
   toString() {
     if (this.#head === undefined) {
       return "";
