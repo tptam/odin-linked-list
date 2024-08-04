@@ -49,7 +49,25 @@ class LinkedList {
       return current;
     }
   }
-  at(index) {}
+  at(index) {
+    if (this.#head === undefined) {
+      return undefined;
+    }
+    const size = this.size();
+    if (index < 0 && size + index >= 0) {
+      return this.at(size + index);
+    }
+    if (index < 0 || index >= size) {
+      return undefined;
+    }
+    let current = this.#head;
+    let count = 0;
+    while (index !== count) {
+      current = current.nextNode;
+      count++;
+    }
+    return current;
+  }
   pop() {}
   contains(value) {}
   find(value) {}
